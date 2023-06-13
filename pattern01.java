@@ -1,26 +1,28 @@
-// sample java program to print digits pattern by using methods 
 import java.util.*;
 class pattern01
 {
-	public static void printNum(int n)
-	{
-      for(int i=1;i<=n;i++)
-		  System.out.print(i+" ");
-	}
-	public static void caller(int n)
-	{
-       for(int i=1;i<=n;i++)
-	   { 
-           printNum(i);
-		   if(i!=n)
-			   System.out.println();	   
-	   }   
-	}
    public static void main(String args[])
    {
      Scanner sc=new Scanner(System.in);
-	 System.out.println("Enter any number :");
+	 char sp=sc.next().charAt(0);
 	 int n=sc.nextInt();
-	 caller(n);
+	 int space=n-1,space1=n-1; 
+	 for(int i=1;i<=n;i++)
+	 {
+	   for(int j=1;j<=space;j++)
+	   {
+	     System.out.print(sp);
+	   }
+	   space--;
+	   for(int j=1;j<=2*i-1;j++)
+	   {
+	     System.out.print("*");
+	   }
+	   for(int j=1;j<=space1;j++)
+	   {
+	     System.out.print(sp);
+	   }space1--;
+	   System.out.println();
+	 }
    }
 }
