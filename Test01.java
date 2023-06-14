@@ -1,23 +1,29 @@
-public class Point
-{ 
-  // attributes
-  double x;
-  double y;
-  // actions or methods
-  public void setX(double x_value){ x=x_value;  }
-   public void setY(double y_value){ y=y_value;  }
-   public double getX() {return x;}
-   public double getY() {return y;}
-   public double square_distance_from_origin(){return x*x+y*y;}
+class ChildThread extends Thread
+{
+  public void run()
+  {
+   for(int i=1;i<=4;i++)
+   {
+     try{
+	     Thread.sleep(500);
+	 }catch(Exception e)
+	 {
+	    System.out.println(e);
+	 }
+	 System.out.println("Child thread execution - "+i);
+   }
+  }
 }
 class Test01
 {
-	public static void main(String args[])
-	{
-		Point P;
-		P=new Point();
-		P.setX(2);
-		P.setY(3);
-		System.out.println(P.square_distance_from_origin());
-	}
+   public static void main(String args[]) throws Exception
+   {
+     ChildThread th1=new ChildThread();
+	 //starting child thread
+	 th1.start();
+	 //main thread joining the childthread
+	 th1.join();
+	 //main thread printing the statements
+	 System.out.println("main thread completed");
+   }
 }
